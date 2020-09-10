@@ -1,0 +1,27 @@
+#Simple linear regression for Hours and scores
+#Initializing path to csv file
+data <- read.csv("C:/Users/Swathi/data.csv")
+print(data)
+
+#assigning the data
+x<-data[,1]
+y<-data[,2]
+
+#Assigning the lm() function to the variables
+relation <- lm(y~x)
+
+#visualizing the summary
+summary(relation)
+
+#Visualizing the data using plot()
+plot(y,x,col = "pink" ,main = "Simple linear regression for Hours and Scores",
+     abline(lm(x~y)),cex = 1.5,pch = 15,
+     xlab = "Hours spent for studying",ylab = "Percentage of marks")
+
+#Applying legend() for clear understanding of plots
+legend(x=25, y=10,legend = "score", col = "pink", pch=15)
+
+#Creating the data frame for a person whose total studied hours is 9.2
+a <- data.frame(x = 9.25)
+result <- predict(relation,a)
+print(result)
